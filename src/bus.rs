@@ -133,7 +133,8 @@ pub trait UsbBus: Sync + Sized {
     /// control transfer, not after.
     ///
     /// The default value for this constant is `false`, which corresponds to the USB 2.0 spec, 9.4.6
-    const QUIRK_SET_ADDRESS_BEFORE_STATUS: bool = false;
+
+    const QUIRK_SET_ADDRESS_BEFORE_STATUS: bool = !cfg!(feature = "quirk-set-address-before-status");
 }
 
 struct AllocatorState {
